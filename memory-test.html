@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Test - NeuroCare AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="logo">
+            NeuroCare AI
+        </div>
+
+        <ul class="dashboard-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="patient.html">Patient</a>
+            </li>
+
+            <li>
+                <a href="chatbot.html">AI Chatbot</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Memory Test Section -->
+
+    <section class="memory-test-section">
+
+        <div class="memory-container">
+
+            <h1>
+                AI Cognitive Memory Test
+            </h1>
+
+            <p>
+                Complete the following questions to analyze memory performance.
+            </p>
+
+            <!-- Question Form -->
+
+            <form id="memoryForm">
+
+                <!-- Question 1 -->
+
+                <div class="question-box">
+
+                    <h3>
+                        1. What day comes after Monday?
+                    </h3>
+
+                    <input
+                        type="text"
+                        id="q1"
+                        placeholder="Enter your answer"
+                        required
+                    >
+
+                </div>
+
+                <!-- Question 2 -->
+
+                <div class="question-box">
+
+                    <h3>
+                        2. Remember this word: APPLE
+                    </h3>
+
+                    <p>
+                        You will be asked later.
+                    </p>
+
+                </div>
+
+                <!-- Question 3 -->
+
+                <div class="question-box">
+
+                    <h3>
+                        3. What is 5 + 3 ?
+                    </h3>
+
+                    <input
+                        type="number"
+                        id="q3"
+                        placeholder="Enter answer"
+                        required
+                    >
+
+                </div>
+
+                <!-- Question 4 -->
+
+                <div class="question-box">
+
+                    <h3>
+                        4. Which animal barks?
+                    </h3>
+
+                    <input
+                        type="text"
+                        id="q4"
+                        placeholder="Enter answer"
+                        required
+                    >
+
+                </div>
+
+                <!-- Question 5 -->
+
+                <div class="question-box">
+
+                    <h3>
+                        5. What was the memory word shown earlier?
+                    </h3>
+
+                    <input
+                        type="text"
+                        id="q5"
+                        placeholder="Enter answer"
+                        required
+                    >
+
+                </div>
+
+                <!-- Submit -->
+
+                <button type="submit" class="primary-btn">
+                    Submit Test
+                </button>
+
+            </form>
+
+            <!-- Result -->
+
+            <div id="resultBox" class="result-box">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 NeuroCare AI | AI Cognitive Test
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const memoryForm =
+        document.getElementById("memoryForm");
+
+        memoryForm.addEventListener("submit",
+        function(event)
+        {
+            event.preventDefault();
+
+            let score = 0;
+
+            // Answers
+
+            const q1 =
+            document.getElementById("q1").value
+            .toLowerCase();
+
+            const q3 =
+            document.getElementById("q3").value;
+
+            const q4 =
+            document.getElementById("q4").value
+            .toLowerCase();
+
+            const q5 =
+            document.getElementById("q5").value
+            .toLowerCase();
+
+            // Checking
+
+            if(q1 === "tuesday")
+            {
+                score++;
+            }
+
+            if(q3 === "8")
+            {
+                score++;
+            }
+
+            if(q4 === "dog")
+            {
+                score++;
+            }
+
+            if(q5 === "apple")
+            {
+                score++;
+            }
+
+            // Result
+
+            const resultBox =
+            document.getElementById("resultBox");
+
+            let analysis = "";
+
+            if(score >= 4)
+            {
+                analysis =
+                "Excellent cognitive performance detected.";
+            }
+
+            else if(score >= 2)
+            {
+                analysis =
+                "Moderate memory performance detected.";
+            }
+
+            else
+            {
+                analysis =
+                "Low memory performance detected. Regular cognitive exercises are recommended.";
+            }
+
+            resultBox.innerHTML =
+            `
+                <h2>Your Score: ${score}/4</h2>
+                <p>${analysis}</p>
+            `;
+
+            // Voice Feedback
+
+            const speech =
+            new SpeechSynthesisUtterance(analysis);
+
+            speech.lang = "en-US";
+
+            window.speechSynthesis.speak(speech);
+
+        });
+
+    </script>
+
+</body>
+</html>

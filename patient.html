@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Dashboard - NeuroCare AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="logo">
+            NeuroCare AI
+        </div>
+
+        <ul class="dashboard-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="medicine.html">Medicine</a>
+            </li>
+
+            <li>
+                <a href="memory-test.html">Memory Test</a>
+            </li>
+
+            <li>
+                <a href="emergency.html">Emergency</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Dashboard Header -->
+
+    <section class="dashboard-header">
+
+        <h1>
+            Welcome Patient
+        </h1>
+
+        <p>
+            Your AI healthcare companion for Alzheimer’s & Dementia support.
+        </p>
+
+    </section>
+
+    <!-- Main Dashboard -->
+
+    <section class="patient-dashboard">
+
+        <!-- AI Voice Assistant -->
+
+        <div class="dashboard-card">
+
+            <h2>AI Voice Assistant</h2>
+
+            <p>
+                Talk with NeuroCare AI for reminders and memory support.
+            </p>
+
+            <button onclick="startVoiceAssistant()" class="primary-btn">
+                Start Assistant
+            </button>
+
+        </div>
+
+        <!-- Medicine Reminder -->
+
+        <div class="dashboard-card">
+
+            <h2>Medicine Reminder</h2>
+
+            <p>
+                Your next medicine is scheduled at 8:00 PM.
+            </p>
+
+            <a href="medicine.html">
+
+                <button class="primary-btn">
+                    View Medicines
+                </button>
+
+            </a>
+
+        </div>
+
+        <!-- Memory Test -->
+
+        <div class="dashboard-card">
+
+            <h2>Daily Memory Test</h2>
+
+            <p>
+                Analyze cognitive health using AI-based memory activities.
+            </p>
+
+            <a href="memory-test.html">
+
+                <button class="primary-btn">
+                    Start Test
+                </button>
+
+            </a>
+
+        </div>
+
+        <!-- Emergency SOS -->
+
+        <div class="dashboard-card emergency-card">
+
+            <h2>Emergency SOS</h2>
+
+            <p>
+                Immediate emergency support and caregiver alert system.
+            </p>
+
+            <a href="emergency.html">
+
+                <button class="sos-btn">
+                    SOS HELP
+                </button>
+
+            </a>
+
+        </div>
+
+        <!-- Health Status -->
+
+        <div class="dashboard-card">
+
+            <h2>Health Status</h2>
+
+            <p>
+                Cognitive Stability: Good
+            </p>
+
+            <p>
+                Stress Level: Low
+            </p>
+
+            <p>
+                Mood Status: Positive
+            </p>
+
+        </div>
+
+        <!-- Daily Activities -->
+
+        <div class="dashboard-card">
+
+            <h2>Daily Activities</h2>
+
+            <ul class="activity-list">
+
+                <li>✔ Morning Medicine Taken</li>
+
+                <li>✔ Memory Exercise Completed</li>
+
+                <li>✔ Walking Routine Completed</li>
+
+                <li>✔ AI Session Active</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 NeuroCare AI | Patient Dashboard
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function startVoiceAssistant()
+        {
+            const message =
+            "Hello. I am your NeuroCare AI assistant. Please take your medicine on time and stay healthy.";
+
+            const speech = new SpeechSynthesisUtterance(message);
+
+            speech.lang = "en-US";
+
+            speech.volume = 1;
+
+            speech.rate = 1;
+
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+        }
+
+    </script>
+
+</body>
+</html>

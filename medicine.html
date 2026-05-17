@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medicine Reminder - NeuroCare AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="logo">
+            NeuroCare AI
+        </div>
+
+        <ul class="dashboard-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="patient.html">Patient</a>
+            </li>
+
+            <li>
+                <a href="caregiver.html">Caregiver</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Medicine Section -->
+
+    <section class="medicine-section">
+
+        <div class="medicine-container">
+
+            <h1>
+                Medicine Reminder System
+            </h1>
+
+            <p>
+                AI-powered medicine tracking and reminder support.
+            </p>
+
+            <!-- Medicine Cards -->
+
+            <div class="medicine-grid">
+
+                <!-- Medicine 1 -->
+
+                <div class="medicine-card">
+
+                    <h2>
+                        Morning Medicine
+                    </h2>
+
+                    <p>
+                        Medicine: Donepezil
+                    </p>
+
+                    <p>
+                        Time: 8:00 AM
+                    </p>
+
+                    <p class="status taken">
+                        Status: Taken
+                    </p>
+
+                </div>
+
+                <!-- Medicine 2 -->
+
+                <div class="medicine-card">
+
+                    <h2>
+                        Afternoon Medicine
+                    </h2>
+
+                    <p>
+                        Medicine: Vitamin Supplement
+                    </p>
+
+                    <p>
+                        Time: 2:00 PM
+                    </p>
+
+                    <p class="status pending">
+                        Status: Pending
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="markTaken(this)"
+                    >
+                        Mark as Taken
+                    </button>
+
+                </div>
+
+                <!-- Medicine 3 -->
+
+                <div class="medicine-card">
+
+                    <h2>
+                        Night Medicine
+                    </h2>
+
+                    <p>
+                        Medicine: Memantine
+                    </p>
+
+                    <p>
+                        Time: 8:00 PM
+                    </p>
+
+                    <p class="status pending">
+                        Status: Pending
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="markTaken(this)"
+                    >
+                        Mark as Taken
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Reminder Button -->
+
+            <div class="reminder-box">
+
+                <button
+                    class="reminder-btn"
+                    onclick="startReminder()"
+                >
+                    Start AI Medicine Reminder
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 NeuroCare AI | Medicine Reminder System
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        // Mark Medicine Taken
+
+        function markTaken(button)
+        {
+            const card =
+            button.parentElement;
+
+            const status =
+            card.querySelector(".status");
+
+            status.innerHTML =
+            "Status: Taken";
+
+            status.style.color =
+            "green";
+
+            button.innerHTML =
+            "Completed";
+
+            button.disabled = true;
+
+            // Voice Confirmation
+
+            const speech =
+            new SpeechSynthesisUtterance(
+                "Medicine marked as taken successfully."
+            );
+
+            speech.lang = "en-US";
+
+            window.speechSynthesis.speak(speech);
+        }
+
+        // AI Reminder
+
+        function startReminder()
+        {
+            const message =
+            "Reminder. Please take your scheduled medicine on time for better cognitive health.";
+
+            const speech =
+            new SpeechSynthesisUtterance(message);
+
+            speech.lang = "en-US";
+
+            speech.rate = 1;
+
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+
+            alert(
+                "AI Medicine Reminder Activated!"
+            );
+        }
+
+    </script>
+
+</body>
+</html>

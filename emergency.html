@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Support - NeuroCare AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="logo">
+            NeuroCare AI
+        </div>
+
+        <ul class="dashboard-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="patient.html">Patient</a>
+            </li>
+
+            <li>
+                <a href="caregiver.html">Caregiver</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Emergency Section -->
+
+    <section class="emergency-section">
+
+        <div class="emergency-container">
+
+            <h1>
+                Emergency SOS Support
+            </h1>
+
+            <p>
+                Immediate AI-powered healthcare emergency assistance.
+            </p>
+
+            <!-- SOS Button -->
+
+            <button class="big-sos-btn" onclick="activateSOS()">
+                ACTIVATE SOS
+            </button>
+
+            <!-- Emergency Status -->
+
+            <div id="sosStatus" class="sos-status">
+
+            </div>
+
+            <!-- Emergency Contacts -->
+
+            <div class="contact-box">
+
+                <h2>
+                    Emergency Contacts
+                </h2>
+
+                <p>
+                    Caregiver: +91 9876543210
+                </p>
+
+                <p>
+                    Doctor: +91 9123456780
+                </p>
+
+                <p>
+                    Ambulance: 108
+                </p>
+
+            </div>
+
+            <!-- Location -->
+
+            <div class="location-box">
+
+                <h2>
+                    Live Location
+                </h2>
+
+                <p id="locationText">
+                    Detecting location...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 NeuroCare AI | Emergency Healthcare Support
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        // Detect Location
+
+        if(navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(
+                function(position)
+                {
+                    const latitude =
+                    position.coords.latitude;
+
+                    const longitude =
+                    position.coords.longitude;
+
+                    document.getElementById("locationText")
+                    .innerHTML =
+                    `
+                        Latitude: ${latitude}
+                        <br>
+                        Longitude: ${longitude}
+                    `;
+                }
+            );
+        }
+
+        else
+        {
+            document.getElementById("locationText")
+            .innerText =
+            "Location access not supported.";
+        }
+
+        // SOS Function
+
+        function activateSOS()
+        {
+            const status =
+            document.getElementById("sosStatus");
+
+            status.innerHTML =
+            `
+                <h2>SOS ACTIVATED</h2>
+
+                <p>
+                    Emergency alerts sent to caregiver and healthcare team.
+                </p>
+            `;
+
+            // Voice Alert
+
+            const speech =
+            new SpeechSynthesisUtterance(
+                "Emergency SOS activated. Caregiver has been notified."
+            );
+
+            speech.lang = "en-US";
+
+            speech.rate = 1;
+
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+
+            // Alert Popup
+
+            alert(
+                "Emergency Alert Sent Successfully!"
+            );
+        }
+
+    </script>
+
+</body>
+</html>

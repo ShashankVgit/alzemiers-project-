@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chatbot - NeuroCare AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="logo">
+            NeuroCare AI
+        </div>
+
+        <ul class="dashboard-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="patient.html">Patient</a>
+            </li>
+
+            <li>
+                <a href="emergency.html">Emergency</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Chatbot Section -->
+
+    <section class="chatbot-section">
+
+        <div class="chatbot-container">
+
+            <h1>
+                AI Healthcare Assistant
+            </h1>
+
+            <p>
+                Ask anything related to medicines, memory care, or emergency support.
+            </p>
+
+            <!-- Chat Messages -->
+
+            <div class="chat-box" id="chatBox">
+
+                <div class="bot-message">
+                    Hello. I am NeuroCare AI. How can I help you today?
+                </div>
+
+            </div>
+
+            <!-- Input Area -->
+
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Type your message..."
+                >
+
+                <button onclick="sendMessage()" class="primary-btn">
+                    Send
+                </button>
+
+                <button onclick="startVoiceInput()" class="voice-btn">
+                    🎤
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 NeuroCare AI | AI Chatbot Support
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function sendMessage()
+        {
+            const input = document.getElementById("userInput");
+
+            const chatBox = document.getElementById("chatBox");
+
+            const userText = input.value.trim();
+
+            if(userText === "")
+            {
+                return;
+            }
+
+            // User Message
+
+            const userMessage = document.createElement("div");
+
+            userMessage.classList.add("user-message");
+
+            userMessage.innerText = userText;
+
+            chatBox.appendChild(userMessage);
+
+            // AI Response
+
+            const botMessage = document.createElement("div");
+
+            botMessage.classList.add("bot-message");
+
+            let response = "";
+
+            const text = userText.toLowerCase();
+
+            if(text.includes("medicine"))
+            {
+                response =
+                "Please take your medicine on time. Your next dose is scheduled at 8 PM.";
+            }
+
+            else if(text.includes("memory"))
+            {
+                response =
+                "Daily memory exercises and social interaction can help improve cognitive health.";
+            }
+
+            else if(text.includes("emergency"))
+            {
+                response =
+                "Emergency support activated. Please contact your caregiver immediately.";
+            }
+
+            else if(text.includes("hello"))
+            {
+                response =
+                "Hello. I am here to assist you with healthcare support.";
+            }
+
+            else
+            {
+                response =
+                "I am analyzing your request. Please stay calm and healthy.";
+            }
+
+            setTimeout(() =>
+            {
+                botMessage.innerText = response;
+
+                chatBox.appendChild(botMessage);
+
+                // Voice Output
+
+                const speech =
+                new SpeechSynthesisUtterance(response);
+
+                speech.lang = "en-US";
+
+                window.speechSynthesis.speak(speech);
+
+                chatBox.scrollTop =
+                chatBox.scrollHeight;
+
+            }, 1000);
+
+            input.value = "";
+        }
+
+        // Voice Input
+
+        function startVoiceInput()
+        {
+            const recognition =
+            new webkitSpeechRecognition();
+
+            recognition.lang = "en-US";
+
+            recognition.start();
+
+            recognition.onresult = function(event)
+            {
+                const voiceText =
+                event.results[0][0].transcript;
+
+                document.getElementById("userInput").value =
+                voiceText;
+            };
+        }
+
+    </script>
+
+</body>
+</html>
